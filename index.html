@@ -121,7 +121,7 @@
   <script>
     const sudahSubmit = localStorage.getItem('sudah-submit') === 'true';
     if (sudahSubmit) {
-      window.location.href = 'sudah-respons.html';
+      window.location.href = location.pathname + 'sudah-respons.html';
     }
 
     const formCalon = document.getElementById('form-calon');
@@ -168,7 +168,7 @@
           }
         })
         .then(function (data) {
-          window.location.href = 'survey-berhasil.html';
+          window.location.href = location.pathname + 'survey-berhasil.html';
         })
         .catch(function (error) {
           // Handle errors, you can display an error message here
