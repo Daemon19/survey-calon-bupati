@@ -22,6 +22,10 @@
     const messageElement = document.getElementById('message');
     const listCalon = document.getElementById('list-calon');
 
+    messageElement.textContent = 'Memuat hasil survey...';
+    messageElement.className = 'info';
+    messageElement.style.display = 'block';
+
     fetch(
       'https://script.google.com/macros/s/AKfycbxmPWpeBFlfc8b7zXmtyXTgNLLoejYkMBPH5Bp0lWx782slzqu0_80KfFM-ckYFEfqUNQ/exec'
     )
@@ -33,6 +37,7 @@
           throw Error('Terjadi kesalah pada spreadsheet');
         }
 
+        messageElement.style.display = 'none';
         renderHasilSurvey(json.data);
       })
       .catch((error) => {

@@ -142,6 +142,12 @@ header {
   border-radius: 0.3rem;
 }
 
+#message.info {
+  background-color: #fafafa;
+  color: black;
+  border-color: #ddd;
+}
+
 h2 {
   font-size: 1.2rem;
   font-weight: 700;
@@ -158,18 +164,21 @@ h2 {
 
 #list-calon li {
   display: flex;
+  gap: 1rem;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 0.4rem;
 }
 
 #list-calon p {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 500;
 }
 
 #list-calon .persentase {
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 500;
+  color: rgb(226, 34, 34);
 }
 
 @media screen and (min-width: 540px) {
@@ -183,5 +192,13 @@ h2 {
 
   .opsi-calon img {
     width: 120px;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  #list-calon p {
+    font-size: 1.8rem;
   }
 }
