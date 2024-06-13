@@ -132,9 +132,6 @@
       // Prevent the default form submission
       e.preventDefault();
 
-      // Simpan bahwa survey pernah disubmit
-      localStorage.setItem('sudah-submit', 'true');
-
       submitButton.textContent = 'Mengirim...';
       submitButton.disabled = true;
 
@@ -168,6 +165,8 @@
           }
         })
         .then(function (data) {
+          // Simpan bahwa survey pernah disubmit
+          localStorage.setItem('sudah-submit', 'true');
           window.location.href = location.pathname + 'survey-berhasil.html';
         })
         .catch(function (error) {
@@ -185,4 +184,3 @@
     crossorigin="anonymous"
   ></script>
 </html>
-
