@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Survey Calon Bupati/Wakil Bupati Gianyar Tahun 2024</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1 class="title">
+        Survey Figur Calon Bupati/Wakil Bupati Gianyar Tahun 2024
+      </h1>
+    </header>
+
+    <main class="container">
+      <div class="description">
+        <i class="fa-solid fa-circle-info description-icon"></i>
+        <p class="description">
+          Klik salah satu calon pilihan anda, lalu kirim survey dengan klik
+          tombol 'Kirim'
+        </p>
+      </div>
+      <form method="post" id="form-calon">
+        <div class="container-opsi">
+          <label class="opsi-calon">
+            <img
+              src="img/cokorda-sukawati.jpg"
+              alt="Tjokorda Gde Raka Sukawati (Cok De)"
+            />
+            <h4>Tjokorda Gde Raka Sukawati (Cok De)</h4>
+            <input
+              type="radio"
+              name="Calon"
+              value="Tjokorda Gde Raka Sukawati (Cok De)"
+            />
+          </label>
+          <label class="opsi-calon">
+            <img src="img/mahayastra.jpg" alt="I Made Mahayastra" />
+            <h4>I Made Mahayastra</h4>
+            <input type="radio" name="Calon" value="I Made Mahayastra" />
+          </label>
+          <label class="opsi-calon">
+            <img src="img/nyoman-parta.jpg" alt="Nyoman Parta" />
+            <h4>Nyoman Parta</h4>
+            <input type="radio" name="Calon" value="Nyoman Parta" />
+          </label>
+          <label class="opsi-calon">
+            <img src="img/gus-gaga.jpeg" alt="Ida Bagus Gaga Adi Saputra" />
+            <h4>Ida Bagus Gaga Adi Saputra</h4>
+            <input
+              type="radio"
+              name="Calon"
+              value="Ida Bagus Gaga Adi Saputra"
+              required
+            />
+          </label>
+          <label class="opsi-calon">
+            <img
+              src="img/cokorda-asmara.jpg"
+              alt="Tjokorda Gde Asmara Putra Sukawati"
+            />
+            <h4>Tjokorda Gde Asmara Putra Sukawati</h4>
+            <input
+              type="radio"
+              name="Calon"
+              value="Tjokorda Gde Asmara Putra Sukawati"
+            />
+          </label>
+          <label class="opsi-calon">
+            <img src="img/gde-mayun.jpg" alt="AA Gde Mayun" />
+            <h4>AA Gde Mayun</h4>
+            <input type="radio" name="Calon" value="AA Gde Mayun" />
+          </label>
+          <label class="opsi-calon">
+            <img
+              src="img/cokorda-ngurah.jpeg"
+              alt="Tjokorda Ngurah Suyadnya (Cok Wah)"
+            />
+            <h4>Tjokorda Ngurah Suyadnya (Cok Wah)</h4>
+            <input
+              type="radio"
+              name="Calon"
+              value="Tjokorda Ngurah Suyadnya (Cok Wah)"
+            />
+          </label>
+          <label class="opsi-calon">
+            <img src="img/tagel-winarta.jpeg" alt="I Wayan Tagel Winarta" />
+            <h4>I Wayan Tagel Winarta</h4>
+            <input type="radio" name="Calon" value="I Wayan Tagel Winarta" />
+          </label>
+          <label class="opsi-calon">
+            <img src="img/tagel-arjana.jpg" alt="I Wayan Tagel Arjana" />
+            <h4>I Wayan Tagel Arjana</h4>
+            <input type="radio" name="Calon" value="I Wayan Tagel Arjana" />
+          </label>
+          <label class="opsi-calon">
+            <img src="img/kakarsana.png" alt="AA Kakarsana" />
+            <h4>AA Kakarsana</h4>
+            <input type="radio" name="Calon" value="AA Kakarsana" />
+          </label>
+          <label class="opsi-calon">
+            <img src="img/kadek-sukadana.jpeg" alt="Kadek Era Sukadana" />
+            <h4>Kadek Era Sukadana</h4>
+            <input type="radio" name="Calon" value="Kadek Era Sukadana" />
+          </label>
+          <label class="opsi-calon">
+            <img src="img/dewa-joni.jpg" alt="Dewa Gede Joni Astabrata" />
+            <h4>Dewa Gede Joni Astabrata</h4>
+            <input type="radio" name="Calon" value="Dewa Gede Joni Astabrata" />
+          </label>
+        </div>
+        <p id="message"></p>
+        <div class="submit-container">
+          <button type="submit" id="submit-button">Kirim</button>
+        </div>
+      </form>
+    </main>
+  </body>
+
+  <script>
+    const sudahSubmit = localStorage.getItem('sudah-submit') === 'true';
+    if (sudahSubmit) {
+      // window.location.replace('/sudah-respons.html');
+    }
+
+    const formCalon = document.getElementById('form-calon');
+    const submitButton = document.getElementById('submit-button');
+
+    formCalon.addEventListener('submit', function (e) {
+      console.log('clicked');
+      // Prevent the default form submission
+      e.preventDefault();
+
+      // Simpan bahwa survey pernah disubmit
+      localStorage.setItem('sudah-submit', 'true');
+
+      submitButton.textContent = 'Mengirim...';
+      submitButton.disabled = true;
+
+      // Collect the form data
+      var formData = new FormData(this);
+      var keyValuePairs = [];
+      for (var pair of formData.entries()) {
+        keyValuePairs.push(pair[0] + '=' + pair[1]);
+      }
+
+      var formDataString = keyValuePairs.join('&');
+
+      // Send a POST request to your Google Apps Script
+      fetch(
+        'https://script.google.com/macros/s/AKfycbxmPWpeBFlfc8b7zXmtyXTgNLLoejYkMBPH5Bp0lWx782slzqu0_80KfFM-ckYFEfqUNQ/exec',
+        {
+          redirect: 'follow',
+          method: 'POST',
+          body: formDataString,
+          headers: {
+            'Content-Type': 'text/plain;charset=utf-8'
+          }
+        }
+      )
+        .then(function (response) {
+          // Check if the request was successful
+          if (response) {
+            return response; // Assuming your script returns JSON response
+          } else {
+            throw new Error('Gagal mengirim survey.');
+          }
+        })
+        .then(function (data) {
+          window.location.replace('/survey-berhasil.html');
+        })
+        .catch(function (error) {
+          // Handle errors, you can display an error message here
+          console.error(error);
+          document.getElementById('message').textContent =
+            'Gagal mengirim survey.';
+          document.getElementById('message').style.display = 'block';
+        });
+    });
+  </script>
+
+  <script
+    src="https://kit.fontawesome.com/b8ac71b2a1.js"
+    crossorigin="anonymous"
+  ></script>
+</html>
+

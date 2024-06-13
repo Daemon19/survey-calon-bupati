@@ -1,0 +1,157 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+  --color-green: #60d32a;
+  --color-dark-green: #4cb31d;
+  --color-red: rgb(248, 117, 117);
+  --color-dark-red: rgb(94, 18, 18);
+}
+
+* {
+  font-family: 'Montserrat', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  margin: 0;
+}
+
+h1 {
+  font-weight: 700;
+  font-style: normal;
+}
+
+h4 {
+  font-weight: 600;
+}
+
+header {
+  background-color: var(--color-green);
+}
+
+.title {
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
+  color: #fafafa;
+  padding: 2rem 1.5rem;
+  text-transform: uppercase;
+  line-height: 1;
+  font-size: 8vw;
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
+  margin-bottom: 7rem;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
+}
+
+.description {
+  margin: 1rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.description-icon {
+  font-size: 2rem;
+}
+
+.container-opsi {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 100%;
+  gap: 0.3rem;
+}
+
+.opsi-calon {
+  display: block;
+  background-color: #fafafa;
+  border-radius: 0.3rem;
+  overflow: hidden;
+  border: 1px solid rgb(196, 196, 196);
+  transition: all ease 200ms;
+}
+
+.opsi-calon:hover {
+  background-color: rgb(221, 221, 221);
+  cursor: pointer;
+}
+
+.opsi-calon:has(> input:checked) {
+  background-color: var(--color-green);
+  color: #fafafa;
+}
+
+.opsi-calon h4 {
+  margin: 0;
+  padding: 1rem;
+  padding-bottom: 0;
+  font-size: 1.2rem;
+}
+
+.opsi-calon input[type='radio'] {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.opsi-calon img {
+  width: 100%;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+}
+
+.submit-container {
+  display: flex;
+  justify-content: end;
+}
+
+#submit-button {
+  background-color: var(--color-green);
+  color: #fafafa;
+  border: 1px solid var(--color-dark-green);
+  border-radius: 0.3rem;
+  padding: 0.4rem 1rem;
+  margin: 1rem 0;
+  font-size: 1rem;
+  transition: all ease 200ms;
+}
+
+#submit-button:hover {
+  background-color: var(--color-dark-green);
+  cursor: pointer;
+}
+
+#submit-button:disabled {
+  cursor: default;
+  background-color: var(--color-dark-green);
+}
+
+#message {
+  display: none;
+  background-color: var(--color-dark-red);
+  color: var(--color-red);
+  border: 1px solid var(--color-red);
+  margin-top: 1rem;
+  padding: 0.7rem;
+  border-radius: 0.3rem;
+}
+
+@media screen and (min-width: 540px) {
+  .title {
+    font-size: 4vw;
+  }
+
+  .opsi-calon {
+    display: flex;
+  }
+
+  .opsi-calon img {
+    width: 120px;
+  }
+}
