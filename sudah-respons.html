@@ -10,5 +10,54 @@
     <header>
       <h1 class="title">Survey telah diisi!</h1>
     </header>
+    <main class="container">
+      <h2>
+        Hasil Sementara Survey Calon Bupati/Wakil Bupati Gianyar Tahun 2024
+      </h2>
+      <ol id="list-calon"></ol>
+      <p id="message"></p>
+    </main>
   </body>
+  <script>
+    const messageElement = document.getElementById('message');
+    const listCalon = document.getElementById('list-calon');
+
+    fetch(
+      'https://script.google.com/macros/s/AKfycbxmPWpeBFlfc8b7zXmtyXTgNLLoejYkMBPH5Bp0lWx782slzqu0_80KfFM-ckYFEfqUNQ/exec'
+    )
+      .then((res) => {
+        return res.json();
+      })
+      .then((json) => {
+        if (!json.success) {
+          throw Error('Terjadi kesalah pada spreadsheet');
+        }
+
+        renderHasilSurvey(json.data);
+      })
+      .catch((error) => {
+        console.log(error);
+        messageElement.textContent = 'Gagal menampilkan hasil sementara survey';
+        messageElement.style.display = 'block';
+      });
+
+    function renderHasilSurvey({ kemunculan }) {
+      const totalPemilih = Object.values(kemunculan).reduce((a, b) => a + b, 0);
+
+      const persentase = {};
+      for (const calon in kemunculan) {
+        const ratio = kemunculan[calon] / totalPemilih;
+        persentase[calon] = (ratio * 100).toFixed(2);
+      }
+      renderPersentase(persentase);
+    }
+
+    function renderPersentase(persentase) {
+      Object.entries(persentase).map(([calon, persen]) => {
+        const li = document.createElement('li');
+        li.innerHTML = `<p>${calon}</p><p class="persentase">${persen}%</p>`;
+        listCalon.appendChild(li);
+      });
+    }
+  </script>
 </html>
