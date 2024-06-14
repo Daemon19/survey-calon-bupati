@@ -58,11 +58,13 @@
     }
 
     function renderPersentase(persentase) {
-      Object.entries(persentase).map(([calon, persen]) => {
-        const li = document.createElement('li');
-        li.innerHTML = `<p>${calon}</p><p class="persentase">${persen}%</p>`;
-        listCalon.appendChild(li);
-      });
+      Object.entries(persentase)
+        .sort(([calonA, persenA], [CalonB, persenB]) => persenB - persenA)
+        .map(([calon, persen]) => {
+          const li = document.createElement('li');
+          li.innerHTML = `<p>${calon}</p><p class="persentase">${persen}%</p>`;
+          listCalon.appendChild(li);
+        });
     }
   </script>
 </html>
