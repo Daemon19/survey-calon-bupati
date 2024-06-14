@@ -16,12 +16,14 @@
         Hasil Sementara Survey Calon Bupati/Wakil Bupati Gianyar Tahun 2024
       </h2>
       <ol id="list-calon"></ol>
+      <p id="jumlah-pemilih"></p>
       <p id="message"></p>
     </main>
   </body>
   <script>
     const messageElement = document.getElementById('message');
     const listCalon = document.getElementById('list-calon');
+    const jumlahPemilihElement = document.getElementById('jumlah-pemilih');
 
     messageElement.textContent = 'Memuat hasil survey...';
     messageElement.className = 'info';
@@ -49,6 +51,8 @@
 
     function renderHasilSurvey({ kemunculan }) {
       const totalPemilih = Object.values(kemunculan).reduce((a, b) => a + b, 0);
+      jumlahPemilihElement.innerHTML =
+        `Total responden sampai saat ini: ${totalPemilih}`;
 
       const persentase = {};
       for (const calon in kemunculan) {
